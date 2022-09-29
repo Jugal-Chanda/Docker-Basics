@@ -34,8 +34,9 @@ RUN cd /var/www
 RUN mkdir /var/www/moodledata
 # USER root
 # RUN chown -R root /var/www/moodledata
+RUN chown -R root /var/www/moodledata
 RUN chmod 0777 /var/www/moodledata
-COPY ./moodle311 /var/www/html
+# COPY ./moodle311 /var/www/html
 WORKDIR /var/www/html
 # RUN php admin/cli/install.php
 

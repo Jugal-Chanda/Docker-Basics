@@ -14,7 +14,7 @@ services:
     ports:
       - ${APP_PORT}:80
     volumes:
-      - ./moodle311:/var/www/html
+      - ./moodle400:/var/www/html
       - ./moodledata:/var/www/moodledata:rw
       # - ./.docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     restart: always
