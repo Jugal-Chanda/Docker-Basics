@@ -131,8 +131,7 @@ $CFG->dboptions = array(
 //
 // If you need both intranet and Internet access please read
 // http://docs.moodle.org/en/masquerading
-$app_port = getenv('APP_PORT');
-$CFG->wwwroot   = 'http://localhost:'.$app_port;
+$CFG->wwwroot   = getenv('WWW_ROOT');
 
 
 //=========================================================================
