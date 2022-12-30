@@ -1,17 +1,13 @@
-FROM node:16.19.0
+FROM --platform=$BUILDPLATFORM node:17.0.1-bullseye-slim as builder
 
 RUN mkdir /frontend
 WORKDIR /frontend
 
-RUN npm install -g @angular/cli
+RUN npm install -g @angular/cli@14
 
 COPY package.json package-lock.json ./
 
 RUN npm ci
-ARG frontend_port
-# RUN port=$((frontend_port))
-# RUN echo ${port}
 
 COPY . .
-
-CMD ["sh","-c","ng serve --host 0.0.0.0 --port ${frontend_port}"]
+CMD ["ng", "serve", "--host", "0.0.0.0"]

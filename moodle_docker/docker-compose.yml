@@ -18,18 +18,13 @@ services:
       - ./moodledata:/var/www/moodledata:rw
       # - ./.docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     restart: always
-  froentend:
-    env_file:
-      - .env
+  frontend:
     build:
       context: frontend
+      target: builder
       dockerfile: frontent.Dockerfile
-      args:
-        - frontend_port=${FRONTEND_PORT}
-    container_name: ${PROJECT_NAME}_frontend
-    network_mode: host
+    ports:
+      - 4201:4200
     volumes:
-      # - /var/run/docker.sock:/var/run/docker.sock
       - ./frontend:/frontend
-      # - /frontend/node_modules
-    restart: always
+      - /frontend/node_modules
